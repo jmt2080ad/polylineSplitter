@@ -1,4 +1,17 @@
-split<-function(xydf, dist = 40){
+### requires plyr, rgdal
+
+coordBuild<-function(spobj){
+  if(class(spobj) == "SpatialLinesDataFrame"){
+    coords <- lapply(l@lines, function(x) lapply(x@Lines, function(y) y@coords))
+    coods <- ldply(coords, data.frame)  
+  }
+  else{
+    stop("Argument class is not supported. Need SpatialLinesDataFrame")
+  }
+}
+
+split<-function(spobj, dist = 40){
+  xydf<-coordBuild(spobj)
   modck<-function(change, mod){
     if(change<0){
       return(mod*-1)
@@ -56,6 +69,7 @@ split<-function(xydf, dist = 40){
 }
 
 splitLines<- function(xydf, dist = 40){
+  xydf<-coordBuild(spobj)
   spoints<-split(xydf, dist)
   linelist<-list()
   lineslist<-list()
@@ -76,6 +90,7 @@ splitLines<- function(xydf, dist = 40){
 }
 
 splitPoints<-function(xydf, dist = 40){
+  xydf<-coordBuild(spobj)
   spoints<-split(xydf, dist)
   return(SpatialPointDataFrame(SpatialPoints(data.frame(x=spoints$x, y=spoints$y)), data = spoints[,1:2]))
 }

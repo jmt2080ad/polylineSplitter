@@ -1,5 +1,4 @@
-### requires plyr, rgdal
-require(rgdal)
+require(sp)
 require(plyr)
 
 coordBuild <- function(spobj){

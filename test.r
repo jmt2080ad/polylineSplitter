@@ -14,7 +14,7 @@ ldat <- Line(data.frame(x,y)) %>%
 
 ldatSplit <- splitLines(ldat, 3)
 
-png("./images/line_splitting.png")
+png("./images/line_splitting.png", width = 960)
 par(mfrow = c(1,2))
 plot(ldat, col = rainbow(length(ldat)), main = "Original Line", lwd = 2)
 plot(ldatSplit, col = rainbow(nrow(ldatSplit)), main = "Split Line", lwd = 2)
@@ -33,7 +33,7 @@ pdat <- Polygon(data.frame(x,y)) %>%
 ## sample intervals
 pdatSplit <- splitPoints(as(pdat, "SpatialLines"), 1)
 
-png("./images/polygon_sampling.png")
+png("./images/polygon_sampling.png", width = 960)
 par(mfrow = c(1,2))
 plot(pdat, col = rainbow(length(pdat)), main = "Original Polygon", lwd = 2)
 plot(pdatSplit, col = rainbow(length(pdatSplit)), main = "Sampled Along Polygon Edge\nAt Even Intevals", lwd = 2)
@@ -48,7 +48,7 @@ pdatSimp <- Polygon(pdatSplit@coords) %>%
     list() %>%
     SpatialPolygons()
 
-png("./images/polygon_simplification.png")
+png("./images/polygon_simplification.png", width = 960)
 par(mfrow = c(1,2))
 plot(pdat, col = rainbow(length(pdat)), main = "Original Polygon", lwd = 2)
 plot(pdatSimp, col = rainbow(length(pdatSimp)), main = "Simplified Polygon via Line Splitting", lwd = 2)

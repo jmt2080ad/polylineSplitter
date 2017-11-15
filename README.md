@@ -6,12 +6,15 @@ Useage can be see in the `test.r` file. These tools were designed for tasks were
 Here are some examples:
 
 This graphic shows how a polyline can be split into parts that are even length plus a remainder. 
+
 ![line_splitting](./images/line_splitting.png)
 
 This graphic shows how a polygon edge can be sampled at an even distance along its perimeter.
+
 ![polygon_sampling](./images/polygon_sampling.png)
 
 This graphic shows how a polygon can be simplifed.
+
 ![polygon_simplification.png](./images/polygon_simplification.png)
 
 

@@ -1,3 +1,5 @@
 library(testthat)
+library(magrittr)
+library(sp)
 library(polySplitter)
 test_check("polySplitter")

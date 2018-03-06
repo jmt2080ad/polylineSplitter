@@ -4,7 +4,7 @@ Title: Split lines and polygons into pieces
 Version: 0.0.0
 Author: Jason Taylor <jason.morgan.taylor@gmail.com>
 Maintainer: Jason Taylor <jason.morgan.taylor@gmail.com>
-Imports: sp magrittr
+Imports: sp, magrittr, plyr
 License: ???
 Encoding: UTF-8
 LazyData: true

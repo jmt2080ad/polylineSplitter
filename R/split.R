@@ -1,31 +1,11 @@
-require(sp)
-require(plyr)
-
-coordBuild <- function(spobj){
-    if(class(spobj) %in% c("SpatialLinesDataFrame",    "SpatialLines")){
-        coords <- lapply(spobj@lines, function(x) lapply(x@Lines, function(y) y@coords))
-        coords <- ldply(coords, data.frame)
-        names(coords) <- c("x","y")
-        return(coords)
-    }
-    if(class(spobj) %in% c("SpatialPolygonsDataFrame", "SpatialPolygons")){
-        coords <- lapply(spobj@polygons, function(x) lapply(x@Polygons, function(y) y@coords))
-        coords <- ldply(coords, data.frame)
-        names(coords) <- c("x","y")
-        return(coords)
-    }
-    if(class(spobj) == "data.frame"){
-        if(all(c("x", "y") %in% tolower(names(spobj)))){
-            return(spobj[c("x", "y")])
-        }
-        else{
-            stop("Dataframe provided does not have x, y columns")
-        }
-    }
-    stop("Class of spatial argument is not supported. Need SpatialLinesDataFrame or SpatialPolygonsDataFrame")
-}
-
-# reads in xy data frame of coordinates and a distance value to split line on
+#' @title reads in xy data frame of coordinates and a distance value to split line on
+#' @param xydf dataframe with x and y coords
+#' @param dist distance in units of coords
+#' @return split version of xydf
+#' @import sp
+#' @import plyr
+#' @export
+#'
 split <- function(xydf, dist){
     modck <- function(change, mod){
         if(change<0){
@@ -125,49 +105,3 @@ split <- function(xydf, dist){
     return(data.frame(x = x, y = y, end = end))
 }
 
-splitLines<- function(spobj, dist, start = T){
-    xydf<-coordBuild(spobj)
-    if (start == F){
-        xydf<-xydf[rev(rownames(xydf)),]
-    }
-    spoints <- split(xydf, dist)
-    linelist <- list()
-    lineslist <- list()
-    id <- 1
-    j <- 1
-    for(i in 1:(nrow(spoints)-1)){
-        linelist[j] <- Line(spoints[c(i, i + 1), c(1:2)])
-        j = j + 1
-        if(spoints[i+1,3] == 1){ 
-            lineslist[id]<-Lines(linelist, ID = id)
-            id = id+1
-            linelist<-list()
-            j = 1
-        }
-    }
-    return(SpatialLinesDataFrame(SpatialLines(lineslist), data = data.frame(id = 0:(length(lineslist)-1))))
-}
-
-splitPoints<-function(spobj, dist, start = T, simplify = F){
-    xydf<-coordBuild(spobj)
-    if (start == F){
-        xydf <- xydf[rev(rownames(xydf)),]
-    }
-    spoints <- split(xydf, dist)
-    spoints <- spoints[which(spoints$end == 1),]
-    spoints$id <- c(0:(nrow(spoints) - 1))
-    spoints$distance <- spoints$id * dist
-    if(simplify == F){
-        return(SpatialPointsDataFrame(SpatialPoints(data.frame(x = spoints$x, y = spoints$y)), data = spoints[,which(names(spoints) %in% c("x","y","id","distance"))]))
-    }
-    return(spoints[c("x", "y")])
-}
-
-verticalSplit <- function(spobj, xdist, start = T){
-    'for all x coordinates
-         if x value == split value
-             then split y == y value
-         if next x value is greater than split value and current x value is less than y value
-             then get slope of line between both two x values
-             caculate y split value at the x split value'
-}

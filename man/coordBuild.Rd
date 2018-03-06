@@ -7,7 +7,7 @@
 coordBuild(spobj)
 }
 \arguments{
-\item{spobj}{sp object}
+\item{spobj}{sp or sf object}
 }
 \value{
 x/y data.frame

@@ -22,6 +22,16 @@ test_that("splitLines works", {
   
   expect_equal(ldatSplit@lines[[2]]@Lines[[2]]@coords[1,], setNames(c(x[5], y[5]), c("x", "y")))
   
+  sf_ldat <- sf::st_linestring(matrix(c(x,y), ncol = 2))
+  
+  sf_ldatSplit <- splitLines(sf_ldat, 3, sf = T)
+  
+  expect_equal(class(sf_ldatSplit), c("sf", "data.frame"))
+  
+  expect_equal(sf::st_coordinates(sf_ldatSplit)[7,c(1:2)], setNames(c(x[5], y[5]), c("X", "Y")))
+  
+  # plot(sf_ldatSplit)
+  
   # png("../../images/line_splitting.png", width = 960)
   # par(mfrow = c(1,2))
   # plot(ldat, col = rainbow(length(ldat)), main = "Original Line", lwd = 2)

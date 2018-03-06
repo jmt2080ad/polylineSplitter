@@ -4,7 +4,7 @@
 \alias{splitLines}
 \title{Split Lines}
 \usage{
-splitLines(spobj, dist, start = T)
+splitLines(spobj, dist, start = T, sf = F)
 }
 \arguments{
 \item{spobj}{sp object}

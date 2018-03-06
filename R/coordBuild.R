@@ -1,12 +1,15 @@
 #' @title build x/y coordinates data.frame
 #' @description to be filled
-#' @param spobj sp object
+#' @param spobj sp or sf object
 #' @return x/y data.frame
 #' @import sp
 #' @import plyr
 #' @export
 #'
 coordBuild <- function(spobj){
+    if("LINESTRING" %in% class(spobj)) {
+      return(setNames(data.frame(sf::st_zm(sf::st_coordinates(spobj))), c("x", "y")))
+    }
     if(class(spobj) %in% c("SpatialLinesDataFrame",    "SpatialLines")){
         coords <- lapply(spobj@lines, function(x) lapply(x@Lines, function(y) y@coords))
         coords <- ldply(coords, data.frame)

@@ -7,14 +7,17 @@
 splitPoints(spobj, dist, start = T, simplify = F)
 }
 \arguments{
+\item{spobj}{sp object}
+
 \item{dist}{distance in units of coords}
 
 \item{start}{start from the start (T) or the end (F)}
 
 \item{simplify}{return simple version x/y points if T else, SpatialPointsDataFrame}
-
-\item{xydf}{dataframe with x and y coords}
 }
 \value{
 points split in format per simplify
+}
+\description{
+to be filled
 }

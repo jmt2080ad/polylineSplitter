@@ -1,5 +1,8 @@
 context("polySplit")
 
+library(magrittr)
+library(sp)
+
 test_that("splitLines works", {
   ## basic line splitting
   x <- c(0.549, 0.707, 1.044, 1.652, 2.530, 2.890, 3.520, 4.218, 4.781, 4.848, 

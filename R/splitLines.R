@@ -1,5 +1,6 @@
 #' @title Split Lines
-#' @param xydf dataframe with x and y coords
+#' @description to be filled
+#' @param spobj sp object
 #' @param dist distance in units of coords
 #' @param start start from the start (T) or the end (F)
 #' @return spatialLinesDataFrame

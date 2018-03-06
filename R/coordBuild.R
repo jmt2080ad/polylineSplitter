@@ -1,5 +1,6 @@
 #' @title build x/y coordinates data.frame
-#' @param spobj 
+#' @description to be filled
+#' @param spobj sp object
 #' @return x/y data.frame
 #' @import sp
 #' @import plyr

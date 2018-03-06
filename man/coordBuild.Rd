@@ -7,8 +7,11 @@
 coordBuild(spobj)
 }
 \arguments{
-\item{spobj}{}
+\item{spobj}{sp object}
 }
 \value{
 x/y data.frame
+}
+\description{
+to be filled
 }

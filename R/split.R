@@ -1,9 +1,11 @@
 #' @title reads in xy data frame of coordinates and a distance value to split line on
+#' @description to be filled
 #' @param xydf dataframe with x and y coords
 #' @param dist distance in units of coords
 #' @return split version of xydf
 #' @import sp
 #' @import plyr
+#' @importFrom utils tail
 #' @export
 #'
 split <- function(xydf, dist){

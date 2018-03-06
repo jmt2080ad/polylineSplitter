@@ -7,12 +7,15 @@
 splitLines(spobj, dist, start = T)
 }
 \arguments{
+\item{spobj}{sp object}
+
 \item{dist}{distance in units of coords}
 
 \item{start}{start from the start (T) or the end (F)}
-
-\item{xydf}{dataframe with x and y coords}
 }
 \value{
 spatialLinesDataFrame
+}
+\description{
+to be filled
 }

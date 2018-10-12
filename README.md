@@ -1,4 +1,11 @@
 # polylineSplitter
+
+### Install Instructions
+```
+install.packages("devtools")
+devtools::install_github("jmt2080ad/polylineSplitter")
+```
+
 Polyline/polygon splitter tools for R. These functions will allow a user to pass SpatialLines or SpatialPolygons and split the line or polygon edge by a specific distance returning either points or line segments depending on which functions are used.
 
 Useage can be see in the `test.r` file. These tools were designed for tasks were precise measurements along lines or polygon perimeters are required. This might include tasks like defining river miles along river lines, defining sample locations along excavation sidewalls, or changing the shapes of lines or polygons based on even distances along those shapes (a form of simplification). 

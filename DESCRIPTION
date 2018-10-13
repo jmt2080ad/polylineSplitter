@@ -1,8 +1,8 @@
-Package: polySplitter
+Package: polylineSplitter
 Type: Package
-Title: Split lines and polygons into pieces
-Description: Functions for plitting lines and polygons.
-Version: 0.0.0
+Title: Split lines into segments
+Description: Functions for taking single feature lines and splitting them into multiple features based on a tracing distance.
+Version: 0.0.1
 Author: Jason Taylor <jason.morgan.taylor@gmail.com> [aut, cre],
   David Blodgett <dblodgett@usgs.gov> [ctb]
 Maintainer: Jason Taylor <jason.morgan.taylor@gmail.com>

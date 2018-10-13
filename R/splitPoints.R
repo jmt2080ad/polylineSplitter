@@ -7,7 +7,6 @@
 #' @return points split in format per simplify
 #' @import sp
 #' @import plyr
-#' @export
 #'
 splitPoints<-function(spobj, dist, start = T, simplify = F){
     xydf<-coordBuild(spobj)

@@ -1,3 +1,3 @@
 library(testthat)
-library(polySplitter)
-test_check("polySplitter")
+library(polylineSplitter)
+test_check("polylineSplitter")

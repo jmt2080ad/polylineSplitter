@@ -7,7 +7,6 @@
 #' @import sp
 #' @import plyr
 #' @export
-#'
 splitLines<- function(spobj, dist, start = T, sf = F){
     xydf<-coordBuild(spobj)
     if (start == F){
@@ -18,28 +17,27 @@ splitLines<- function(spobj, dist, start = T, sf = F){
     lineslist <- list()
     id <- 1
     if(!sf) {
-    j <- 1
-    for(i in 1:(nrow(spoints)-1)){
-        linelist[j] <- Line(spoints[c(i, i + 1), c(1:2)])
-        j = j + 1
-        if(spoints[i+1,3] == 1){ 
-            lineslist[id]<-Lines(linelist, ID = id)
-            id = id+1
-            linelist<-list()
-            j = 1
+        j <- 1
+        for(i in 1:(nrow(spoints)-1)){
+            linelist[j] <- Line(spoints[c(i, i + 1), c(1:2)])
+            j = j + 1
+            if(spoints[i+1,3] == 1){ 
+                lineslist[id]<-Lines(linelist, ID = id)
+                id = id+1
+                linelist<-list()
+                j = 1
+            }
         }
-    }
-    return(SpatialLinesDataFrame(SpatialLines(lineslist), data = data.frame(id = 0:(length(lineslist)-1))))
-    
+        return(SpatialLinesDataFrame(SpatialLines(lineslist), data = data.frame(id = 0:(length(lineslist)-1))))
     } else {
-      start <- 1
-      for(i in 1:(nrow(spoints)-1)){
-        if(spoints[i+1,3] == 1){ 
-          lineslist[[id]] <- sf::st_linestring(as.matrix(spoints[c(start:(i + 1)), c(1:2)], ncol = 2))
-          id <- id + 1
-          start <- i + 1
+        start <- 1
+        for(i in 1:(nrow(spoints)-1)){
+            if(spoints[i+1,3] == 1){ 
+                lineslist[[id]] <- sf::st_linestring(as.matrix(spoints[c(start:(i + 1)), c(1:2)], ncol = 2))
+                id <- id + 1
+                start <- i + 1
+            }
         }
-      }
-      t <- sf::st_sf(id = 1:length(lineslist), geom = sf::st_sfc(lineslist))
+        return(sf::st_sf(id = 1:length(lineslist), geom = sf::st_sfc(lineslist)))
     }
 }

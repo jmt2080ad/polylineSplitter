@@ -6,7 +6,6 @@
 #' @import sp
 #' @import plyr
 #' @importFrom utils tail
-#' @export
 #'
 split <- function(xydf, dist){
     modck <- function(change, mod){
@@ -46,8 +45,16 @@ split <- function(xydf, dist){
                     ymod <- modck(cy, ymod)
                     xremsub <- modck(cx, xremsub)
                     yremsub <- modck(cy, yremsub)
-                    xnew<-seq(xydf$x[i-1] - xremsub, xydf$x[i-1] + (xmod * segs), by = xmod)[-1]
-                    ynew<-seq(xydf$y[i-1] - yremsub, xydf$y[i-1] + (ymod * segs), by = ymod)[-1]
+                    xnew <- seq(xydf$x[i-1] - xremsub, xydf$x[i-1] + (xmod * segs), by = xmod)[-1]
+                    ynew <- seq(xydf$y[i-1] - yremsub, xydf$y[i-1] + (ymod * segs), by = ymod)[-1]
+                    if(length(xnew) != length(ynew)){
+                        if(abs(length(xnew) - length(ynew)) > 1) stop("Error found in new sequence. Code needs to be reviewed...")
+                        if(length(xnew) < length(ynew)){
+                            xnew <- c(xnew, xydf$x[i-1] + (xmod * segs))
+                        } else {
+                            ynew <- c(ynew, xydf$y[i-1] + (ymod * segs))
+                        }
+                    }
                     rem<-sqrt((xydf$x[i] - tail(xnew,1))^2 + (xydf$y[i] - tail(ynew,1))^2)
                     x <- c(x, xnew)
                     y <- c(y, ynew)
@@ -94,8 +101,8 @@ split <- function(xydf, dist){
                     end <- c(end, rep(1, length(ynew)))
                 }
             }
-            x<-c(x, xydf$x[i])
-            y<-c(y, xydf$y[i])
+            x <- c(x, xydf$x[i])
+            y <- c(y, xydf$y[i])
             if(i != nrow(xydf)){
                 end <- c(end, 0)    
                 }
@@ -106,4 +113,3 @@ split <- function(xydf, dist){
     }
     return(data.frame(x = x, y = y, end = end))
 }
-

@@ -4,8 +4,6 @@
 #' @return x/y data.frame
 #' @import sp
 #' @import plyr
-#' @export
-#'
 coordBuild <- function(spobj){
     if("LINESTRING" %in% class(spobj)) {
       return(setNames(data.frame(sf::st_zm(sf::st_coordinates(spobj))), c("x", "y")))

@@ -1,0 +1,15 @@
+  /home/nol/Projects/polylineSplitter:
+  total used in directory 52 available 10565228
+  drwxrwxr-x  8 nol nol 4096 Oct 13 11:53 .
+  drwxrwxr-x 85 nol nol 4096 Oct 11 17:12 ..
+  -rw-rw-r--  1 nol nol  471 Oct 13 11:51 DESCRIPTION
+  drwxrwxr-x  8 nol nol 4096 Oct 12 14:09 .git
+  -rw-rw-r--  1 nol nol   71 Oct 12 14:09 .gitignore
+  drwxrwxr-x  2 nol nol 4096 Jan 19  2018 images
+  drwxrwxr-x  3 nol nol 4096 Oct 12 19:34 inst
+  drwxrwxr-x  2 nol nol 4096 Oct 12 14:09 man
+  -rw-rw-r--  1 nol nol  112 Oct 12 19:50 NAMESPACE
+  -rw-rw-r--  1 nol nol  343 Oct 12 14:09 polySplitter.Rproj
+  drwxrwxr-x  2 nol nol 4096 Oct 12 14:32 R
+  -rw-rw-r--  1 nol nol 1526 Oct 13 11:53 README.md
+  drwxrwxr-x  3 nol nol 4096 Oct 12 19:51 tests
